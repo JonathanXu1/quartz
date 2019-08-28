@@ -32,18 +32,6 @@ module.exports = {
             ],
         },
         {
-            test: /\.svg$/,
-            use: ['@svgr/webpack'],
-        },
-        {
-            test: /\.(pdf|jpg|png|gif|ico)$/,
-            use: [
-                {
-                    loader: 'file-loader'
-                },
-            ]
-        },
-        {
             test: /\.scss$/,
             use: [
                 "style-loader", // creates style nodes from JS strings
@@ -70,13 +58,13 @@ module.exports = {
             ],
         },
         {
-            test: /\.(jpe?g|png|gif)$/, // loader for images
-            use: [{ loader: 'file-loader?name=img/[name]__[hash:base64:5].[ext]' }],
+            test: /\.(jpe?g|png|gif|ico)$/, // loader for images
+            use: [{ loader: 'file-loader' }],
             include: defaultInclude
         },
         {
             test: /\.(eot|svg|ttf|woff|woff2)$/, // loader for custom fonts
-            use: [{ loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }],
+            use: [{ loader: 'file-loader' }],
             include: defaultInclude
         }
     ]
