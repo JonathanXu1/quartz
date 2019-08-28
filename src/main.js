@@ -25,8 +25,8 @@ if (process.platform === 'win32') {
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 400,
+    height: 850,
     show: false
   })
 
@@ -37,7 +37,7 @@ const createWindow = () => {
   if (dev && process.argv.indexOf('--noDevServer') === -1) {
     indexPath = url.format({
       protocol: 'http:',
-      host: 'localhost:8080',
+      host: 'localhost:8099',
       pathname: 'index.html',
       slashes: true
     })
