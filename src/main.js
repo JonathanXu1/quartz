@@ -1,25 +1,25 @@
 'use strict';
 
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
-const url = require('url')
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const url = require('url');
+const fs = require('fs');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
-
+let mainWindow;
 // Keep a reference for dev mode
-let dev = false
+let dev = false;
 
 if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath)) {
-  dev = true
+  dev = true;
 }
 
 // Temporary fix broken high-dpi scale factor on Windows (125% scaling)
 // info: https://github.com/electron/electron/issues/9691
 if (process.platform === 'win32') {
-  app.commandLine.appendSwitch('high-dpi-support', 'true')
-  app.commandLine.appendSwitch('force-device-scale-factor', '1')
+  app.commandLine.appendSwitch('high-dpi-support', 'true');
+  app.commandLine.appendSwitch('force-device-scale-factor', '1');
 }
 
 const createWindow = () => {
@@ -31,7 +31,19 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true
     }
-  })
+  });
+
+  const loadClientConfig = () => {
+    try{
+      let content = fs.readFileSync('/Users/hanxiao/.myriade/config.json', 'utf-8');
+      console.log(typeof content);
+      return JSON.parse(content);
+    }
+    catch(err){
+      console.log(err);
+      return {};
+    }
+  };
 
   // and load the index.html of the app.
   let indexPath
@@ -52,7 +64,8 @@ const createWindow = () => {
     })
   }
 
-  mainWindow.loadURL(indexPath)
+  mainWindow.loadURL(indexPath);
+  mainWindow.clientConfig = loadClientConfig();
 
   // Don't show until we are ready and loaded
   mainWindow.once('ready-to-show', () => {
