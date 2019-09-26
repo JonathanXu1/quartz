@@ -17,12 +17,10 @@ class AuthLayer extends Component {
         login: this.login,
         jwtToken: null
     }
-    this.url = config["myriade_login_url"] || "http://0.0.0.0:8180";
-
   }
 
   login(email, password) {
-    axios.post(`${this.url}/v1/account/login`, 
+    return axios.post(`${config.myriade_login_url}/v1/account/login`, 
       {
         email, 
         password

@@ -14,18 +14,20 @@ class App extends React.Component {
        return (
          <div>
              <AuthConsumer>
-                 {({authenticated}) => (
-                     <div>
-                         {
-                            authenticated ? <Redirect to={ROUTES.DASHBOARD} /> : <Redirect to={ROUTES.LOGIN} />
-                         }
-                     </div>
-                 )}
-             </AuthConsumer>
-             <Switch>
-                <Route exact path={ROUTES.DASHBOARD} component={DashboardPage} />
-                <Route path={ROUTES.LOGIN} component={LoginPage} />
-            </Switch>
+                 {({authenticated, login}) => (
+                     <> 
+                        <div>
+                            {
+                                authenticated ? <Redirect to={ROUTES.DASHBOARD} /> : <Redirect to={ROUTES.LOGIN} />
+                            }
+                        </div>
+                        <Switch>
+                            <Route exact path={ROUTES.DASHBOARD} component={DashboardPage} />
+                            <Route path={ROUTES.LOGIN} component={() => <LoginPage login={login}/>} />
+                        </Switch>
+                    </>
+                )}
+            </AuthConsumer>
          </div>
        )
     }

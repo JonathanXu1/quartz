@@ -25,9 +25,10 @@ if (process.platform === 'win32') {
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1020,
+    width: 1080,
     height: 720,
     show: false,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -36,7 +37,6 @@ const createWindow = () => {
   const loadClientConfig = () => {
     try{
       let content = fs.readFileSync('/Users/hanxiao/.myriade/config.json', 'utf-8');
-      console.log(typeof content);
       return JSON.parse(content);
     }
     catch(err){

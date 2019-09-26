@@ -6,6 +6,8 @@ import AuthLayer from './layers/Auth.jsx';
 
 import ErrorBoundaryLayer from './layers/ErrorBoundary.jsx';
 
+import "./styles/shards/shards.scss";
+
 const wrapper = document.getElementById('app');
 
 
