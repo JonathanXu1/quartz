@@ -6,7 +6,7 @@ import config from '../utils/config.js';
 
 const authContext = createContext();
 
-class AuthComponent extends Component {
+class AuthLayer extends Component {
   
   constructor(props) {
     super(props);
@@ -65,4 +65,4 @@ class AuthComponent extends Component {
 }
 
 export const AuthConsumer = authContext.Consumer;
-export default AuthComponent;
+export default AuthLayer;

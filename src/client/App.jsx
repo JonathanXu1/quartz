@@ -3,7 +3,7 @@ import { withRouter, Route, Redirect, NavLink, Switch } from 'react-router-dom';
 
 import * as ROUTES from './utils/routes.js'
 
-import { AuthConsumer } from './components/Auth.jsx';
+import { AuthConsumer } from './layers/Auth.jsx';
 
 import DashboardPage from './pages/Dashboard.jsx';
 import LoginPage from './pages/Login.jsx';

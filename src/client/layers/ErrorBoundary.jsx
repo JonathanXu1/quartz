@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-class ErrorBoundary extends Component {
+class ErrorBoundaryLayer extends Component {
     constructor(props) {
         super(props);
         this.state = { hasError: false };
@@ -39,4 +39,4 @@ class ErrorBoundary extends Component {
     }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundaryLayer;
