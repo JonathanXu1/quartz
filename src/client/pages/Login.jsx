@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { AuthConsumer } from '../../components/Auth.jsx';
 
 import { Col } from 'react-bootstrap';
 import { Card, CardHeader, CardBody, CardFooter, Button } from 'shards-react';
