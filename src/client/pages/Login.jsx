@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Col, Container } from 'react-bootstrap';
 import { Card, CardHeader, CardBody, CardFooter, Button } from 'shards-react';
 import { Form, FormInput, FormGroup, Alert } from "shards-react";
+import Loader from 'react-loader-spinner'
 
 import PageStyle from '../styles/pages/Login.less';
 
@@ -39,6 +40,18 @@ class LoginPage extends Component {
       <Alert theme="warning" dismissible={this.dismissError}>
         There was an error, try again.-{" "}
       </Alert>
+    )
+  }
+
+  displayLoading() {
+    return (
+      <Loader
+	     type="Mutating Dots"
+	     color="#00BFFF"
+	     height={100}
+	     width={100}
+	     timeout={3000} //3 secs
+	  />
     )
   }
 

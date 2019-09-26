@@ -10,6 +10,8 @@ class AuthLayer extends Component {
   
   constructor(props) {
     super(props);
+    this.updateAuth = this.updateAuth.bind(this);
+    this.login = this.login.bind(this);
     this.state = {
         miner: null,
         authenticated: false,
@@ -17,6 +19,7 @@ class AuthLayer extends Component {
         login: this.login,
         jwtToken: null
     }
+    
   }
 
   login(email, password) {
@@ -26,7 +29,7 @@ class AuthLayer extends Component {
         password
       })
       .then(({data}) => {
-        this.updateAuth(data.accessToken);
+        return this.updateAuth(data.accessToken);
       })
   }
 

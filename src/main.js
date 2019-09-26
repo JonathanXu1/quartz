@@ -1,10 +1,9 @@
 'use strict';
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, remote } = require('electron');
 const path = require('path');
-const url = require('url');
+const url =  require('url');
 const fs = require('fs');
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -22,33 +21,21 @@ if (process.platform === 'win32') {
   app.commandLine.appendSwitch('force-device-scale-factor', '1');
 }
 
-const createWindow = () => {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 1080,
-    height: 720,
-    show: false,
-    resizable: false,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
+const loadClientConfig = () => {
+  try{
+    let content = fs.readFileSync('/Users/hanxiao/.myriade/config.json', 'utf-8');
+    return JSON.parse(content);
+  }
+  catch(err){
+    console.log(err);
+    return {};
+  }
+};
 
-  const loadClientConfig = () => {
-    try{
-      let content = fs.readFileSync('/Users/hanxiao/.myriade/config.json', 'utf-8');
-      return JSON.parse(content);
-    }
-    catch(err){
-      console.log(err);
-      return {};
-    }
-  };
-
-  // and load the index.html of the app.
-  let indexPath
-
-  // Implementing Webpack
+// Implementing Webpack
+const computeIndexPath = () =>{
+  let indexPath;
+  
   if (dev && process.argv.indexOf('--noDevServer') === -1) {
     indexPath = url.format({
       protocol: 'http:',
@@ -63,9 +50,28 @@ const createWindow = () => {
       slashes: true
     })
   }
+  return indexPath;
+};
 
+const indexPath = computeIndexPath();
+const clientConfig = loadClientConfig();
+
+const createWindow = () => {
+
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 1080,
+    height: 720,
+    show: false,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
+
+  // and load the index.html of the app.
   mainWindow.loadURL(indexPath);
-  mainWindow.clientConfig = loadClientConfig();
+  mainWindow.clientConfig = clientConfig;
 
   // Don't show until we are ready and loaded
   mainWindow.once('ready-to-show', () => {
