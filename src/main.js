@@ -23,7 +23,7 @@ if (process.platform === 'win32') {
 
 const loadClientConfig = () => {
   try{
-    let content = fs.readFileSync('/Users/hanxiao/.myriade/config.json', 'utf-8');
+    let content = fs.readFileSync('/home/jonathan/Documents/Myriade/config.json', 'utf-8');
     return JSON.parse(content);
   }
   catch(err){
@@ -35,7 +35,7 @@ const loadClientConfig = () => {
 // Implementing Webpack
 const computeIndexPath = () =>{
   let indexPath;
-  
+
   if (dev && process.argv.indexOf('--noDevServer') === -1) {
     indexPath = url.format({
       protocol: 'http:',
@@ -66,8 +66,14 @@ const createWindow = () => {
     resizable: false,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    // Remove the window frame from windows applications
+    frame: false,
+    // Hide the titlebar from MacOS applications while keeping the stop lights
+    titleBarStyle: 'hidden', // or 'customButtonsOnHover',
   });
+  // Disable menubar
+  //mainWindow.setMenuBarVisibility(false);
 
   // and load the index.html of the app.
   mainWindow.loadURL(indexPath);
