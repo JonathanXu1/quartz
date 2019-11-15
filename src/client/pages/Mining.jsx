@@ -1,28 +1,44 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, CardImg } from "shards-react";
+import { Card, CardDeck, Container, Row, Col } from "react-bootstrap";
 
 
 class Mining extends Component {
     render() {
         return (
-          <Container>
-            <Row>
-              <h1>Mining</h1>
-            </Row>
-            <Row>
-              <Col>
-                <Card>
-                  <CardImg src="https://place-hold.it/300x200" />
+          <Container className="h-100 d-flex flex-column">
+            <h4>Mining</h4>
+            <CardDeck>
+              <Card className="text-white">
+                <Card.Img src="https://place-hold.it/300x200" alt="Card image" />
+                <Card.ImgOverlay>
+                  <Card.Text>Average Hashrate</Card.Text>
+                  <Card.Title>598H/sec</Card.Title>
+                </Card.ImgOverlay>
+              </Card>
+              <Card className="text-white">
+                <Card.Img src="https://place-hold.it/300x200" alt="Card image" />
+                <Card.ImgOverlay>
+                  <Card.Text>Total MC Earned</Card.Text>
+                  <Card.Title>598H/sec</Card.Title>
+                </Card.ImgOverlay>
+              </Card>
+              <Card className="text-white">
+                <Card.Img src="https://place-hold.it/300x200" alt="Card image" />
+                <Card.ImgOverlay>
+                  <Card.Text>XMR/USD</Card.Text>
+                  <Card.Title>598H/sec</Card.Title>
+                </Card.ImgOverlay>
+              </Card>
+            </CardDeck>
+            <Row className="flex-grow-1">
+              <Col md="8 pt-4 pb-5">
+                <Card className="h-100">
+                  Yeet
                 </Card>
               </Col>
-              <Col>
-                <Card>
-                  <CardImg src="https://place-hold.it/300x200" />
-                </Card>
-              </Col>
-              <Col>
-                <Card>
-                  <CardImg src="https://place-hold.it/300x200" />
+              <Col md="4 pt-4 pb-5">
+                <Card className="h-100">
+                  Yeet2
                 </Card>
               </Col>
             </Row>

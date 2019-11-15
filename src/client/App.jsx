@@ -9,6 +9,8 @@ import { AuthConsumer } from './layers/Auth.jsx';
 import DashboardPage from './pages/Dashboard.jsx';
 import LoginPage from './pages/Login.jsx';
 
+import {Container} from "react-bootstrap";
+
 class App extends React.Component {
     render() {
        return (

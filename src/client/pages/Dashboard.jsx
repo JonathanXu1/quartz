@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col} from 'shards-react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import PageStyle from '../styles/pages/Dashboard.less';
 
@@ -9,12 +9,12 @@ import Sidenav from '../components/Sidenav.jsx';
 class DashboardPage extends Component {
   render() {
     return (
-      <Container fluid style={{padding: '0'}}>
-        <Row noGutters>
-          <Col sm="3">
+      <Container fluid className={PageStyle.container} >
+        <Row noGutters className="w-100">
+          <Col sm="2">
             <Sidenav/>
           </Col>
-          <Col sm="9" className={PageStyle.main}>
+          <Col sm="10" className={PageStyle.Mining}>
             <Mining/>
           </Col>
         </Row>
