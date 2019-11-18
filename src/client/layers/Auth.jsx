@@ -14,7 +14,7 @@ class AuthLayer extends Component {
     this.login = this.login.bind(this);
     this.state = {
         miner: null,
-        authenticated: true, //TODO: Change back
+        authenticated: false,
         logout: this.logout,
         login: this.login,
         jwtToken: null
