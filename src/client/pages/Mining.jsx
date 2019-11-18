@@ -33,12 +33,12 @@ class Mining extends Component {
             <Row className="flex-grow-1">
               <Col md="8 pt-4 pb-5">
                 <Card className="h-100">
-                  Yeet
+                  Card1
                 </Card>
               </Col>
               <Col md="4 pt-4 pb-5">
                 <Card className="h-100">
-                  Yeet2
+                  Card2
                 </Card>
               </Col>
             </Row>
